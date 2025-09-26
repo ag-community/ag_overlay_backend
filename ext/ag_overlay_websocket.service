@@ -1,0 +1,19 @@
+[Unit]
+Description=AG Overlay udp
+
+[Service]
+Type=simple
+User=root
+Group=root
+
+Environment=APP_COMPONENT=websocket
+
+WorkingDirectory=/home/user/ag_overlay_backend
+ExecStart=/home/user/ag_overlay_backend/target/release/ag_overlay_backend
+Restart=on-failure
+
+StandardOutput=file:/var/log/ag_overlay.log
+StandardError=file:/var/log/ag_overlay.log
+
+[Install]
+WantedBy=multi-user.target

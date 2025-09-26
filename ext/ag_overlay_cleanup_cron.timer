@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer for AG Overlay Cleanup Cron
+
+[Timer]
+OnUnitActiveSec=5s
+AccuracySec=100ms
+Persistent=true
+
+[Install]
+WantedBy=timers.target
