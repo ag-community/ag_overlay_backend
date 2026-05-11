@@ -13,7 +13,13 @@ pub async fn serve(settings: &AppSettings) -> anyhow::Result<()> {
     loop {
         let (len, addr) = listener.recv_from(&mut buf).await?;
         let data = String::from_utf8_lossy(&buf[..len]);
-        let server: ServerPayload = serde_json::from_str(data.as_ref())?;
+        let server: ServerPayload = match serde_json::from_str(data.as_ref()) {
+            Ok(server) => server,
+            Err(error) => {
+                warn!("Ignoring malformed UDP payload from {}: {}", addr, error);
+                continue;
+            }
+        };
 
         servers::add_server(&state, addr, server).await?;
     }
