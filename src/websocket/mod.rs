@@ -40,7 +40,7 @@ async fn handle_connection<C: Context>(ctx: &C, peer: SocketAddr, stream: TcpStr
     info!("New WebSocket connection: {}", peer);
 
     let (mut ws_sender, _) = ws_stream.split();
-    let mut interval = tokio::time::interval(Duration::from_millis(1000));
+    let mut interval = tokio::time::interval(Duration::from_millis(250));
 
     loop {
         tokio::select! {

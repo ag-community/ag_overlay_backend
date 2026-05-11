@@ -9,6 +9,7 @@ pub struct ServerPayload {
     hostname: String,
     players: Vec<Player>,
     timelimit: u32,
+    map: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -17,6 +18,7 @@ pub struct ServerData {
     hostname: String,
     players: Vec<Player>,
     timelimit: u32,
+    map: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]

@@ -11,4 +11,7 @@ pub struct Player {
     name: String,
     team: String,
     weapon: String,
+    x: i16,
+    y: i16,
+    z: i16,
 }
